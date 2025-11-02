@@ -18,6 +18,7 @@ import numpy as np
 import imutils
 from imutils.contours import sort_contours
 import re
+import sys
 
 # Configure TensorFlow at module import time (before any TF operations)
 _configured_tf = False
@@ -243,12 +244,16 @@ def recognize_equation(model, label_encoder, image):
         if not worker_script.exists():
             return None, f"Worker script not found: {worker_script}"
         
-        # Use subprocess worker with venv311 Python
-        python_exe = Path(__file__).parent.resolve() / "venv311" / "bin" / "python"
-        if not python_exe.exists():
-            python_exe = Path(__file__).parent.resolve() / "venv" / "bin" / "python"
-        if not python_exe.exists():
-            python_exe = "python3"  # Fallback
+        # Use the same Python interpreter as the current process (ensures packages are available)
+        # This works on Streamlit Cloud and local environments
+        python_exe = sys.executable
+        # Fallback to venv if sys.executable is somehow unavailable
+        if not python_exe or not Path(python_exe).exists():
+            python_exe = Path(__file__).parent.resolve() / "venv311" / "bin" / "python"
+            if not python_exe.exists():
+                python_exe = Path(__file__).parent.resolve() / "venv" / "bin" / "python"
+                if not python_exe.exists():
+                    python_exe = "python3"  # Final fallback
         
         cmd = [
             str(python_exe), str(worker_script),
