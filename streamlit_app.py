@@ -56,6 +56,36 @@ st.markdown(
         background: #f0f2f6;
         margin: 1rem 0;
     }
+    .image-container {
+        padding: 1.5rem;
+        border-radius: 10px;
+        background: white;
+        border: 2px solid #e0e0e0;
+        margin: 1rem 0;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+    .team-members {
+        text-align: center;
+        color: #666;
+        padding: 1rem;
+        background: #f8f9fa;
+        border-radius: 8px;
+        margin-top: 1rem;
+    }
+    .team-members h4 {
+        color: #1f77b4;
+        margin-bottom: 0.5rem;
+        font-size: 1.1rem;
+    }
+    .team-members ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+    .team-members li {
+        padding: 0.3rem 0;
+        font-size: 0.95rem;
+    }
     </style>
 """,
     unsafe_allow_html=True,
@@ -231,7 +261,9 @@ if uploaded_file is not None:
 
     with col1:
         st.subheader("📷 Uploaded Image")
+        st.markdown('<div class="image-container">', unsafe_allow_html=True)
         st.image(image, caption="Your equation", use_container_width=True)
+        st.markdown('</div>', unsafe_allow_html=True)
 
     # Process image
     if st.button("🔮 Solve Equation", type="primary", use_container_width=True):
@@ -335,8 +367,14 @@ else:
 st.markdown("---")
 st.markdown(
     """
-<div style='text-align: center; color: #666; padding: 1rem;'>
-    <p>Handwritten Equation Solver using CNN</p>
+<div class="team-members">
+    <h4>👥 Team Members</h4>
+    <ul>
+        <li>1. P Hamal Johny</li>
+        <li>2. K.B.S Srikar</li>
+        <li>3. V Abhilesh</li>
+    </ul>
+    <p style="margin-top: 1rem; margin-bottom: 0;">Handwritten Equation Solver using CNN</p>
 </div>
 """,
     unsafe_allow_html=True,
