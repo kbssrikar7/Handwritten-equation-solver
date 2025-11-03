@@ -64,28 +64,7 @@ st.markdown(
         margin: 1rem 0;
         box-shadow: 0 2px 4px rgba(0,0,0,0.1);
     }
-    .team-members {
-        text-align: center;
-        color: #666;
-        padding: 1rem;
-        background: #f8f9fa;
-        border-radius: 8px;
-        margin-top: 1rem;
-    }
-    .team-members h4 {
-        color: #1f77b4;
-        margin-bottom: 0.5rem;
-        font-size: 1.1rem;
-    }
-    .team-members ul {
-        list-style: none;
-        padding: 0;
-        margin: 0;
-    }
-    .team-members li {
-        padding: 0.3rem 0;
-        font-size: 0.95rem;
-    }
+    /* Team members section removed */
     </style>
 """,
     unsafe_allow_html=True,
@@ -363,19 +342,4 @@ else:
     - Example equation: "2 + 3 = ?"
     """)
 
-# Footer
-st.markdown("---")
-st.markdown(
-    """
-<div class="team-members">
-    <h4>👥 Team Members</h4>
-    <ul>
-        <li>1. P Hamal Johny</li>
-        <li>2. K.B.S Srikar</li>
-        <li>3. V Abhilesh</li>
-    </ul>
-    <p style="margin-top: 1rem; margin-bottom: 0;">Handwritten Equation Solver using CNN</p>
-</div>
-""",
-    unsafe_allow_html=True,
-)
+# Footer removed as requested
